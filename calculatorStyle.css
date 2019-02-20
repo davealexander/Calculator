@@ -4,28 +4,66 @@ body{
 h1{
     font-weight: bold;
     font-family: fantasy;
+    text-align: center;
 }
 .row{
-    
+ display: table;
+ table-layout: fixed;
+ width: 200px;
 }
 .smButton{
-
+    background-color: #E0E0E0;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    width: 55px;
+    Height: 35px;
+    border: 1px solid gray;
+    cursor: pointer;
+    padding-top: 20px;
+}
+.smButton:hover{
+    background-color: orange
+}
+.lgButton{
+    background-color: #E0E0E0;
+    color: black;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 20px;
+    width: 92px;
+    Height: 35px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+.lgButton:hover{
+    background-color:orange;
+}
+.operatorBtn{
+    background-color:#F79231
 }
 .btn-coloumn{
-
-}
-.btn-row{
-
+ display: table-cell; 
 }
 #cBody{
-
+ margin-top: 5%;
+ margin-left: 43%;
 }
 #cDisplay{
-
+    background-color: #324E6F;
+    color: #B5BCB8;
+    width:218px;
+    height: 50px;
+    text-align:right;
+    font-size: 40px;
+    padding: 5px;
+    border-radius: 5px 5px 0 0 ;
+    overflow: hidden;
 }
 #calc-zero{
-
+    border-radius: 0 0 0 5px;
 }
-#allclear{
-    
+#calc-sum{
+    border-radius: 0 0 5px 0 ;
 }
