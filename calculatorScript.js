@@ -21,9 +21,32 @@ const sumBtn = document.getElementById("calc-sum")
 const decbtn = document.getElementById("calc-decimal")
 const cDisplay = document.getElementById("cDisplay")
 
+//Array of number + operator buttons
+const numBtn = document.getElementsByClassName('numBtn');
+const opsBtn = document.getElementsByClassName('operatorBtn');
+
 let cDisplayVal = 0;
 let pendingVal;
 let evalStringArray = [];
+
+//Updates display values
+let updateDisplay = (clickObj) => {
+    let btnText = clickObj.target.innerHTML;
+
+    if(cDisplayVal === 0)
+        cDisplayVal = '';
+    cDisplayVal += btnText;
+    cDisplay.innerText = cDisplayVal;
+}
+
+//adds event listenrs to both number and operator buttons
+for(i=0; i<numBtn.length; i++){
+    numBtn[i].addEventListener('click', updateDisplay, false);
+    }
+//for(i=0; i<opsBtn.length; i++){
+//    opsBtn[i].addEventListener('click', performOperation, false);
+//    }
+
 
 //all clear function
 acBtn.onclick = () => {
@@ -42,4 +65,13 @@ backBtn.onclick = () => {
 }
 
 //create a switch function for calculations
+
+switch (key) {
+    case value:
+        
+        break;
+
+    default:
+        break;
+}
 //create arrays for buttons
