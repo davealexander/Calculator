@@ -25,9 +25,9 @@ const cDisplay = document.getElementById("cDisplay")
 const numBtn = document.getElementsByClassName('numBtn');
 const opsBtn = document.getElementsByClassName('operatorBtn');
 
-let cDisplayVal = 0;
-let pendingVal;
-let evalStringArray = [];
+let cDisplayVal = 0; // Value for display
+let pendingVal; // variable that holds the previous numbers and operation
+let evalStringArray = []; // evaluation string that will run the operations
 
 //Updates display values
 let updateDisplay = (clickObj) => {
@@ -35,43 +35,69 @@ let updateDisplay = (clickObj) => {
 
     if(cDisplayVal === 0)
         cDisplayVal = '';
-    cDisplayVal += btnText;
-    cDisplay.innerText = cDisplayVal;
+        cDisplayVal += btnText;
+         cDisplay.innerText = cDisplayVal;
 }
-
-//adds event listenrs to both number and operator buttons
-for(i=0; i<numBtn.length; i++){
-    numBtn[i].addEventListener('click', updateDisplay, false);
-    }
-//for(i=0; i<opsBtn.length; i++){
-//    opsBtn[i].addEventListener('click', performOperation, false);
-//    }
-
-
 //all clear function
 acBtn.onclick = () => {
     cDisplayVal = 0;
     pendingVal = undefined;
-    cDisplay.innerHTML = cDisplayVal;
+    cDisplay.innerText = cDisplayVal;
 }
 //backspace function
 backBtn.onclick = () => {
     let lengthOfDisplay = cDisplayVal.length;
     cDisplayVal = cDisplayVal.slice(0, lengthOfDisplay-1);
-    if(cDisplay == ''){
-        cDisplay = 0;
+    if(cDisplayVal === ''){
+        cDisplayVal = 0;
     }
-    cDisaply.innerHTML = cDisplayVal;
+    cDisplay.innerText = cDisplayVal;
 }
-
 //create a switch function for calculations
+let performOperation = (clickObj) => {
+    let ops = clickObj.target.innerText;
 
-switch (key) {
-    case value:
-        
+switch (ops) {
+    case '+':
+        pendingVal = cDisplayVal;
+        cDisplayVal = 0;
+        cDisplay.innerText = cDisplayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push('+');
         break;
-
+    case '-':
+    pendingVal = cDisplayVal;
+        cDisplayVal = 0;
+        cDisplay.innerText = cDisplayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push('-'); 
+        break;
+     case 'x':
+        pendingVal = cDisplayVal;
+        cDisplayVal = 0;
+        cDisplay.innerText = cDisplayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push('*');
+        break;
+    case '÷':
+        pendingVal = cDisplayVal;
+        cDisplayVal = 0;
+        cDisplay.innerText = cDisplayVal;
+        evalStringArray.push(pendingVal);
+        evalStringArray.push('/');
+         break;
+    case '=':
+        evalStringArray.push(cDisplayVal);
+        let evaluation = //do not use EVAL!
     default:
         break;
+    }
 }
-//create arrays for buttons
+//adds event listeners to both number and operator buttons
+for(i=0; i<numBtn.length; i++){
+    numBtn[i].addEventListener('click', updateDisplay, false);
+    }
+//adds event listeners to operation buttons
+for(i=0; i<opsBtn.length; i++){
+    opsBtn[i].addEventListener('click', performOperation, false);
+   }
