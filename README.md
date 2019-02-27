@@ -1,0 +1,1 @@
+This is a basic calculator app demonstrating all the knowledge gained through the Odin Project's intro to Javascript
